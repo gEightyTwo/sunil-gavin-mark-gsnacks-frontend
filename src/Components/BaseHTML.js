@@ -1,13 +1,7 @@
-import React, { Component } from 'react';
-import './App.css';
-import {Col, Row, Modal, Button} from 'react-materialize'
-import '../node_modules/font-awesome/css/font-awesome.min.css';
+import React from 'react'
 
 
-
-class App extends Component {
-  render() {
-    return (
+const baseHTML = () => (
       <div className="App">
 
         <Modal id='login' actions='' className='modal'>
@@ -444,4 +438,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default baseHTML
