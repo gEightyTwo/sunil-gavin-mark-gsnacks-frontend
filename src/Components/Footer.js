@@ -1,0 +1,21 @@
+import React from 'react'
+import {Col, Row, Modal, Button} from 'react-materialize'
+
+
+const Footer = () => (
+
+<section className='footer'>
+
+  <Row >
+    <Col s={12}>
+      <div className='footer-block'></div>
+      <p>2018 © Snacks, Inc.</p>
+    </Col>
+  </Row>
+
+
+</section>
+
+)
+
+export default Footer
