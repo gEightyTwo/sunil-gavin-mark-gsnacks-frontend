@@ -1,10 +1,11 @@
 import React from 'react'
+import {Col, Row, Modal, Button} from 'react-materialize'
 
 
 const baseHTML = () => (
       <div className="App">
 
-        <Modal id='login' actions='' className='modal'>
+        {/* <Modal id='login' actions='' className='modal'>
           <img alt=''src={'./assets/nav-logo.png'} className='modal-image'/>
           <form className='modal-form'>
             <input type="email" class="validate" placeholder='Email Address'/>
@@ -21,8 +22,8 @@ const baseHTML = () => (
             <input type="text" class="validate" placeholder='Picture URL - http://mywebsite.com/me.jpg'/>
             <button className='modal-button'>Sign Up</button>
           </form>
-        </Modal>
-
+        </Modal> */}
+{/*
         <div className='nav bar'>
           <div className='nav logo'>
             <img alt=''src={'./assets/nav-logo.png'} className='nav logo image'/>
@@ -33,13 +34,13 @@ const baseHTML = () => (
             <a href="#" className='hidden'>Log Out</a>
 
           </div>
-        </div>
+        </div> */}
 
-        <div className='banner'></div>
+        {/* <div className='banner'></div> */}
 
         {/* This Section is For the Front Page*/}
 
-        <div className='main-container hidden'>
+        {/* <div className='main-container'>
 
           <section className='food-category'>
 
@@ -257,12 +258,12 @@ const baseHTML = () => (
 
 
           </section>
-        </div>
+        </div> */}
 
 
         {/* This Section is For the Item Page*/}
 
-        <div className='main-container-item'>
+        {/* <div className='main-container-item'>
 
           <section className='food-category'>
 
@@ -430,7 +431,7 @@ const baseHTML = () => (
 
           </section>
 
-        </div>
+        </div> */}
 
 
       </div>
