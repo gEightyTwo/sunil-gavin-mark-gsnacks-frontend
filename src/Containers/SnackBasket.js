@@ -28,7 +28,7 @@ class SnackBasket  extends Component {
         </Row>
         <Row className='card-container'>
           {
-            this.props.snackList.map(el => <Link to={`/${el.id}`} params={{ testvalue: "hello" }}><SnackBasketItem itemData={el}/></Link>)
+            this.props.snackList.map(el => <Link to={`/${el.id}`} params={{ testvalue: "hello" }}><SnackBasketItem itemData={el} /></Link>)
           }
         </Row>
       </section>

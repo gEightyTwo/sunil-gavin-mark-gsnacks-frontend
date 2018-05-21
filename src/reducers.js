@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import { GET_ALL_SNACKS, GET_ALL_REVIEWS, GET_USER, GET_AUTH } from './actions'
+import { GET_ALL_SNACKS, GET_ALL_REVIEWS, GET_USER, GET_AUTH, GET_ALL_USERS } from './actions'
 
 const INITIAL_VALUE = []
 
@@ -32,4 +32,11 @@ const auth = (state = INITIAL_VALUE, action) => {
   }
 }
 
-export default combineReducers({ snackList, snackReviews, user, auth })
+const allUsers = (state = INITIAL_VALUE, action) => {
+  switch(action.type){
+    case GET_ALL_USERS: return action.payload
+    default: return state
+  }
+}
+
+export default combineReducers({ snackList, snackReviews, user, auth, allUsers })
