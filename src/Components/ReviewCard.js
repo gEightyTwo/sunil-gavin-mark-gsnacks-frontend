@@ -23,7 +23,7 @@ const ReviewCard = ({reviewCardData:{text,title,user_id,rating,updated_at}}) => 
         </div>
       </div>
        <div className ='review-card-stars'>
-         {[...Array(rating).keys()].map(el=><i className="fas fa-star" />)}
+         {[...Array(rating).keys()].map((el)=><i className="fas fa-star" key={el}/>)}
        </div>
        <p className ='review-card-text'>
         {text}

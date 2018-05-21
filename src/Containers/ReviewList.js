@@ -12,7 +12,7 @@ const ReviewList = (props) => (
           <Col s={12} >
 
              <div className='item-page-reviews-container'>
-               <p className = 'item-page-card-review-count'>301 Reviews</p>
+               <p className = 'item-page-card-review-count'>{props.snackReviews.filter(el => el.snack_id == props.snackId).length} Reviews</p>
                <div className ='item-page-card-stars'>
                  <i className="fas fa-star" />
                  <i className="fas fa-star" />
@@ -22,7 +22,7 @@ const ReviewList = (props) => (
              </div>
           </Col>
 
-          {props.snackReviews.map(el => <ReviewCard reviewCardData={el} key={el.id}/>)}
+          {props.snackReviews.filter(el => el.snack_id == props.snackId).map(el => <ReviewCard reviewCardData={el} key={el.id}/>)}
 
 
         </Col>
