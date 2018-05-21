@@ -6,8 +6,8 @@ const ModalLogIn = () => (
 <Modal id='login' actions='' className='modal'>
   <img alt=''src={'./assets/nav-logo.png'} className='modal-image'/>
   <form className='modal-form'>
-    <input type="email" class="validate" placeholder='Email Address'/>
-    <input type="password" class="validate" placeholder='Password'/>
+    <input type="email" className="validate" placeholder='Email Address'/>
+    <input type="password" className="validate" placeholder='Password'/>
     <button className='modal-button'>Log In</button>
   </form>
 </Modal>
