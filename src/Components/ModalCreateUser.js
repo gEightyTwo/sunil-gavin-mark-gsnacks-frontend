@@ -5,11 +5,11 @@ import {Col, Row, Modal, Button} from 'react-materialize'
 const ModalCreateUser = () => (
   <Modal id='signup' actions='' className='modal'>
     <form className='modal-form'>
-    <input type="text" class="validate" placeholder='First Name'/>
-    <input type="text" class="validate" placeholder='Last Name'/>
-      <input type="email" class="validate" placeholder='Email Address'/>
-      <input type="password" class="validate" placeholder='Password'/>
-      <input type="text" class="validate" placeholder='Picture URL - http://mywebsite.com/me.jpg'/>
+    <input type="text" className="validate" placeholder='First Name'/>
+    <input type="text" className="validate" placeholder='Last Name'/>
+      <input type="email" className="validate" placeholder='Email Address'/>
+      <input type="password" className="validate" placeholder='Password'/>
+      <input type="text" className="validate" placeholder='Picture URL - http://mywebsite.com/me.jpg'/>
       <button className='modal-button'>Sign Up</button>
     </form>
   </Modal>

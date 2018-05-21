@@ -5,7 +5,7 @@ export const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS'
 export const GET_USER = 'GET_USER'
 export const GET_AUTH = 'GET_AUTH'
 
-const API = 'http://localhost:5000/'
+const API = 'http://localhost:5000'
 
 
 export const getAllSnacks = () => (
@@ -14,19 +14,19 @@ export const getAllSnacks = () => (
     .then((response) => {
       dispatch({
         type: GET_ALL_SNACKS,
-        payload: response.data
+        payload: response.data.data
       })
     })
   }
 )
 
-export const getAllReviews = () => (
+export const getAllReviews = (snackId) => (
   dispatch => {
-    axios.get(`${API}/api/reviews`)
+    axios.get(`${API}/api/snacks/${1}/reviews`)
     .then((response) => {
       dispatch({
         type: GET_ALL_REVIEWS,
-        payload: response.data
+        payload: response.data.data
       })
     })
   }
@@ -47,7 +47,7 @@ export const getUser = () => (
     .then((response) => {
       dispatch({
         type: GET_USER,
-        payload: response.data
+        payload: response.data.data
       })
     })
   }
@@ -59,7 +59,7 @@ export const getAuth = () => (
     .then((response) => {
       dispatch({
         type: GET_AUTH,
-        payload: response.data
+        payload: response.data.data
       })
     })
   }

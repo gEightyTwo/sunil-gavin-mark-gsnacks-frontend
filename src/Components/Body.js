@@ -1,15 +1,36 @@
-import React from 'react'
+import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {getAllSnacks, getAllReviews} from '../actions'
+
+
+
 import Banner from './Banner'
 import SnackBasket from '../Containers/SnackBasket'
 import SnackPage from '../Containers/SnackPage'
 import {Col, Row, Modal, Button} from 'react-materialize'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
 
-const Body = () => (
-  <div>
-    <Banner />
-    {false ? <SnackBasket/> : <SnackPage/>}
-</div>
-)
+class Body extends Component {
 
 
-export default Body
+  componentDidMount(){
+    this.props.getAllSnacks()
+    this.props.getAllReviews()
+  }
+
+  render = () => (
+    <div>
+      <Banner />
+      <BrowserRouter>
+         <Switch>
+           <Route exact path='/:snackId' component={ SnackPage } />
+           <Route exact path='/' component={ SnackBasket } />
+         </Switch>
+       </BrowserRouter>
+  </div>
+  )
+}
+
+const mapDispatchToProps = dispatch => bindActionCreators({getAllSnacks,getAllReviews}, dispatch)
+export default connect(null,mapDispatchToProps)(Body)
