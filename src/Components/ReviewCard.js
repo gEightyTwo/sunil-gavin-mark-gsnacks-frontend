@@ -4,16 +4,17 @@ import SnackBasket from '../Containers/SnackBasket'
 import SnackPage from '../Containers/SnackPage'
 import {Col, Row, Modal, Button} from 'react-materialize'
 
-const ReviewCard = () => (
+const ReviewCard = ({reviewCardData:{text,title,user_id,rating,updated_at}}) => (
   <Col s={12} >
 
+      {console.log(text,title,user_id,rating,updated_at)}
      <div className='review-card'>
      <div className='review-card-header'>
        <div>
           <img alt=''className='review-card-user-image' src={'./assets/dandog.jpg'} />
           <div className='review-card-user-container'>
-            <h3 className='review-card-username'>Dandog</h3>
-            <h4 className='review-card-date'>May 2018</h4>
+            <h3 className='review-card-username'>Dandog {user_id}</h3>
+            <h4 className='review-card-date'>May 2018 {updated_at}</h4>
           </div>
         </div>
         <div className='review-card-actions'>
@@ -22,14 +23,10 @@ const ReviewCard = () => (
         </div>
       </div>
        <div className ='review-card-stars'>
-         <i className="fas fa-star" />
-         <i className="fas fa-star" />
-         <i className="fas fa-star" />
-         <i className="fas fa-star" />
-         <i className="fas fa-star" />
+         {[...Array(rating).keys()].map(el=><i className="fas fa-star" />)}
        </div>
        <p className ='review-card-text'>
-       Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
+        {text}
        </p>
      </div>
   </Col>

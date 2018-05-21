@@ -1,10 +1,6 @@
 import React from 'react'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { handleSubmit } from '../actions'
 
-import ModalLogIn from '../Components/ModalLogIn'
-import ModalCreateUser from '../Components/ModalCreateUser'
 import ReviewCard from '../Components/ReviewCard'
 
 import {Col, Row, Modal, Button} from 'react-materialize'
@@ -26,16 +22,14 @@ const ReviewList = (props) => (
              </div>
           </Col>
 
-          <ReviewCard />
-          <ReviewCard />
-          <ReviewCard />
+          {props.snackReviews.map(el => <ReviewCard reviewCardData={el} key={el.id}/>)}
+
 
         </Col>
 
 
 )
 
-// const mapDispatchToProps = (dispatch) => bindActionCreators({ }, dispatch)
 
-// export default connect(null, mapDispatchToProps)(Navbar)
-export default ReviewList
+const mapStateToProps = ({snackReviews}) => ({snackReviews})
+export default connect(mapStateToProps)(ReviewList)
