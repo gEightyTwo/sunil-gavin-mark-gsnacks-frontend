@@ -20,9 +20,9 @@ export const getAllSnacks = () => (
   }
 )
 
-export const getAllReviews = (snackId) => (
+export const getAllReviews = () => (
   dispatch => {
-    axios.get(`${API}/api/snacks/${1}/reviews`)
+    axios.get(`${API}/api/reviews`)
     .then((response) => {
       dispatch({
         type: GET_ALL_REVIEWS,
@@ -32,9 +32,9 @@ export const getAllReviews = (snackId) => (
   }
 )
 
-export const createReview = (body) => (
+export const createReview = (snackId, body) => (
   dispatch => {
-    axios.post(`${API}/api/reviews`, body)
+    axios.post(`${API}/api/snacks/${snackId}/reviews`, body)
     .then(response => {
       dispatch(getAllReviews())
     })
