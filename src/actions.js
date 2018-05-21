@@ -5,7 +5,7 @@ export const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS'
 export const GET_USER = 'GET_USER'
 export const GET_AUTH = 'GET_AUTH'
 
-const API = 'http://localhost:5000/'
+const API = 'http://localhost:5000'
 
 
 export const getAllSnacks = () => (

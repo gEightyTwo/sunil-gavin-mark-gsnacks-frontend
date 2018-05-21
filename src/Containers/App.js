@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 //import components
 import Navbar from './Navbar'
 import Body from '../Components/Body'

@@ -1,10 +1,19 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+
+
 import {Col, Row, Modal, Button} from 'react-materialize'
 import SnackBasketItem from './SnackBasketItem'
+import {getAllSnacks} from '../actions'
 
 
 
 class SnackBasket  extends Component {
+
+  componentDidMount(){
+    this.props.getAllSnacks()
+  }
 
   render = () => (
     <div className='main-container'>
@@ -27,5 +36,6 @@ class SnackBasket  extends Component {
 
 }
 
-
-export default SnackBasket
+const mapDispatchToProps = dispatch => bindActionCreators({getAllSnacks}, dispatch)
+const mapStateToProps = ({snackList}) => ({snackList})
+export default connect(mapStateToProps, mapDispatchToProps)(SnackBasket)
