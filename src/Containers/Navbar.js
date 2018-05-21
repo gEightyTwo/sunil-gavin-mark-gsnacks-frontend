@@ -29,7 +29,4 @@ const Navbar = (props) => (
   </nav>
 )
 
-// const mapDispatchToProps = (dispatch) => bindActionCreators({ }, dispatch)
-
-// export default connect(null, mapDispatchToProps)(Navbar)
 export default Navbar

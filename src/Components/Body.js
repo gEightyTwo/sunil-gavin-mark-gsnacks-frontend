@@ -1,4 +1,7 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {getAllSnacks, getAllReviews} from '../actions'
 
 
 
@@ -9,6 +12,13 @@ import {Col, Row, Modal, Button} from 'react-materialize'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 
 class Body extends Component {
+
+
+  componentDidMount(){
+    this.props.getAllSnacks()
+    this.props.getAllReviews()
+  }
+
   render = () => (
     <div>
       <Banner />
@@ -22,5 +32,5 @@ class Body extends Component {
   )
 }
 
-
-export default Body
+const mapDispatchToProps = dispatch => bindActionCreators({getAllSnacks,getAllReviews}, dispatch)
+export default connect(null,mapDispatchToProps)(Body)

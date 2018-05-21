@@ -1,18 +1,19 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
 
 
 import {Col, Row, Modal, Button} from 'react-materialize'
 import SnackBasketItem from './SnackBasketItem'
-import {getAllSnacks} from '../actions'
+
+import {Link} from 'react-router-dom'
+
 
 
 
 class SnackBasket  extends Component {
 
-  componentDidMount(){
-    this.props.getAllSnacks()
+  constructor(props){
+    super(props)
   }
 
   render = () => (
@@ -27,15 +28,15 @@ class SnackBasket  extends Component {
         </Row>
         <Row className='card-container'>
           {
-            [...Array(12).keys()].map(el => <SnackBasketItem />)
+            this.props.snackList.map(el => <Link to={`/${el.id}`} params={{ testvalue: "hello" }}><SnackBasketItem itemData={el}/></Link>)
           }
         </Row>
       </section>
     </div>
   )
 
+
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({getAllSnacks}, dispatch)
 const mapStateToProps = ({snackList}) => ({snackList})
-export default connect(mapStateToProps, mapDispatchToProps)(SnackBasket)
+export default connect(mapStateToProps)(SnackBasket)
