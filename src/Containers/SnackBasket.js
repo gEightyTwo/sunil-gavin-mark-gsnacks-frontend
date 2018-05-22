@@ -28,8 +28,27 @@ class SnackBasket  extends Component {
         </Row>
         <Row className='card-container'>
           {
-            this.props.snackList.map(el => <Link to={`/${el.id}`} params={{ testvalue: "hello" }}><SnackBasketItem itemData={el} /></Link>)
-          }
+            [...Array(4).keys()].map(col=>(
+            <Col s={6} l={3} xl={3} className='hide-on-med-and-down'>
+              {
+                this.props.snackList
+                  .filter(el => el.id%4  === col)
+                  .map(el => <Link to={`/${el.id}`}><SnackBasketItem itemData={el} /></Link>)
+              }
+            </Col>
+          ))
+        }
+        {
+          [...Array(4).keys()].map(col=>(
+          <Col s={6} l={3} xl={3} className='hide-on-large-only'>
+            {
+              this.props.snackList
+                .filter(el => el.id%2  === col)
+                .map(el => <Link to={`/${el.id}`}><SnackBasketItem itemData={el} /></Link>)
+            }
+          </Col>
+        ))
+      }
         </Row>
       </section>
     </div>
