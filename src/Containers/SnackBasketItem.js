@@ -5,7 +5,7 @@ import {Col, Row, Modal, Button} from 'react-materialize'
 
 const SnackBasketItem = ({itemData: {name, description, img}}) => (
 
-  <Col s={6} l={3} xl={3} className='item-card'>
+  <Col s={12} className='item-card'>
     {console.log(name,description,img)}
     <img alt=''src={img} className='responsive-img card-image'/>
     <h1 className='card-title'>{name}</h1>
