@@ -18,11 +18,14 @@ class ReviewList extends Component {
   }
 
   createStars(i){
+    const result = []
     for(i; i>0; i--){
-       if(i>1) <i className="fas fa-star" />
-       if(0.2>i>1) <i className="fas fa-star-half" />
-      }
-   }
+    console.log(i);
+     if(i>.75) result.push(<i className="fas fa-star" />)
+     else if(i>.25) result.push(<i className="fas fa-star-half" />)
+    }
+    return result
+  }
 
   render = () => (
     <Col s={12} l={7}>
@@ -37,7 +40,7 @@ class ReviewList extends Component {
       {this.props.snackReviews.filter(el => el.snack_id == this.props.snackId).map(el =>
         <ReviewCard
           reviewCardData={el}
-          userData={this.props.allUsers.find(user => user.id == el.user_id)}
+          userData={this.props.allUsers.find(user => user.id == el.user_id) || {} }
           key={el.id}/>
       )}
     </Col>
