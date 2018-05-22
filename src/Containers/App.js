@@ -1,4 +1,6 @@
 import React from 'react';
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
+
 
 //import components
 import Navbar from './Navbar'
@@ -13,9 +15,15 @@ import '../../node_modules/font-awesome/css/font-awesome.min.css';
 const App = (props) => {
   return (
     <div>
+      <BrowserRouter>
+        <div>
       <Navbar />
       <Body />
       <Footer />
+    </div>
+
+    </BrowserRouter>
+
     </div>
   )
 }
