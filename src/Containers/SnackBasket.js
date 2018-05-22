@@ -1,14 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-
 import {Col, Row, Modal, Button} from 'react-materialize'
 import SnackBasketItem from './SnackBasketItem'
 
 import {Link} from 'react-router-dom'
-
-
-
 
 class SnackBasket  extends Component {
 
@@ -34,8 +30,6 @@ class SnackBasket  extends Component {
       </section>
     </div>
   )
-
-
 }
 
 const mapStateToProps = ({snackList}) => ({snackList})

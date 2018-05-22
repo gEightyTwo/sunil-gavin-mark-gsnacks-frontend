@@ -1,20 +1,23 @@
 import React from 'react'
+import Moment from 'react-moment';
+import 'moment-timezone';
+
 import Banner from './Banner'
 import SnackBasket from '../Containers/SnackBasket'
 import SnackPage from '../Containers/SnackPage'
+
 import {Col, Row, Modal, Button} from 'react-materialize'
 
 const ReviewCard = ({reviewCardData:{text,title,user_id,rating,updated_at},userData}) => (
   <Col s={12} >
 
-      {console.log(userData)}
      <div className='review-card'>
      <div className='review-card-header'>
        <div>
           <img alt=''className='review-card-user-image' src={userData.picture} />
           <div className='review-card-user-container'>
             <h3 className='review-card-username'>{userData.first_name} {userData.last_name}</h3>
-            <h4 className='review-card-date'>May 2018 {updated_at}</h4>
+            <h4 className='review-card-date'> <Moment fromNow>{updated_at}</Moment></h4>
           </div>
         </div>
         <div className='review-card-actions'>

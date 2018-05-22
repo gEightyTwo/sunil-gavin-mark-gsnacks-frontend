@@ -1,7 +1,6 @@
 import React from 'react'
 import {Col, Row, Modal, Button} from 'react-materialize'
 
-
 const ModalCreateUser = () => (
   <Modal id='signup' actions='' className='modal'>
     <form className='modal-form'>
@@ -14,6 +13,5 @@ const ModalCreateUser = () => (
     </form>
   </Modal>
 )
-
 
 export default ModalCreateUser

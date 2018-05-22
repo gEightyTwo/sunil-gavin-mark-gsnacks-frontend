@@ -1,7 +1,6 @@
 import React from 'react'
 import {Col, Row, Modal, Button} from 'react-materialize'
 
-
 const ModalLogIn = () => (
 <Modal id='login' actions='' className='modal'>
   <img alt=''src={'./assets/nav-logo.png'} className='modal-image'/>
@@ -12,6 +11,5 @@ const ModalLogIn = () => (
   </form>
 </Modal>
 )
-
 
 export default ModalLogIn
