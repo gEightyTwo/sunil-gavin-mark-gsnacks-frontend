@@ -18,13 +18,9 @@ class ReviewList extends Component {
   }
 
   createStars(i){
-    const result = []
-    for(i; i>0; i--){
-    console.log(i);
-     if(i>.75) result.push(<i className="fas fa-star" />)
-     else if(i>.25) result.push(<i className="fas fa-star-half" />)
-    }
-    return result
+    if(i>=1) return [<i className="fas fa-star" />, ...this.createStars(i-1)]
+    else if(i<1 && i>1) return [<i className="fas fa-star-half" />]
+    else return []
   }
 
   render = () => (

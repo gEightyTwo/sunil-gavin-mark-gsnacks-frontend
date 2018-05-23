@@ -3,7 +3,7 @@ import {Col, Row, Modal, Button} from 'react-materialize'
 
 
 
-const SnackBasketItem = ({itemData: {name, description, img}}) => (
+const SnackBasketItem = ({itemData: {name, description, img}, createStars}) => (
 
   <Col s={12} className='item-card'>
     {console.log(name,description,img)}
