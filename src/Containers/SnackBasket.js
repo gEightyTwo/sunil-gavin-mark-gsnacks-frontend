@@ -12,6 +12,10 @@ class SnackBasket  extends Component {
     super(props)
   }
 
+  singleSnackReviewData(id){
+    return this.props.snackReviews.filter(obj => obj.id.snack_id == id)
+  }
+
   render = () => (
     <div className='main-container'>
       <section className='food-category'>
@@ -29,7 +33,7 @@ class SnackBasket  extends Component {
                 {
                   this.props.snackList
                     .filter(el => el.id%4  === col)
-                    .map(el => <Link to={`/${el.id}`}><SnackBasketItem itemData={el} /></Link>)
+                    .map(el => <Link to={`/${el.id}`}><SnackBasketItem itemData={el} reviewData={this.singleSnackReviewData(el.id)}/></Link>)
                 }
               </Col>
             ))
@@ -40,7 +44,7 @@ class SnackBasket  extends Component {
                 {
                   this.props.snackList
                     .filter(el => el.id%2  === col)
-                    .map(el => <Link to={`/${el.id}`}><SnackBasketItem itemData={el} /></Link>)
+                    .map(el => <Link to={`/${el.id}`}><SnackBasketItem itemData={el} reviewData={this.singleSnackReviewData(el.id)} /></Link>)
                 }
               </Col>
             ))
@@ -51,5 +55,5 @@ class SnackBasket  extends Component {
   )
 }
 
-const mapStateToProps = ({snackList}) => ({snackList})
+const mapStateToProps = ({snackReviews, snackList}) => ({snackReviews, snackList})
 export default connect(mapStateToProps)(SnackBasket)
