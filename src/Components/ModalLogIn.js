@@ -1,15 +1,53 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {Col, Row, Modal, Button} from 'react-materialize'
+import { request, AuthenticationService } from '../helpers'
 
-const ModalLogIn = () => (
-  <div>
-    <img alt=''src={'./assets/nav-logo.png'} className='modal-image'/>
-    <form className='modal-form'>
-      <input type="email" className="validate" placeholder='Email Address'/>
-      <input type="password" className="validate" placeholder='Password'/>
-      <button className='modal-button'>Log In</button>
-    </form>
-  </div>
-)
+
+class ModalLogIn extends Component {
+
+  constructor(props){
+    super(props)
+    this.state = {
+      showErrorMessage: false
+    }
+  }
+
+
+  handleSignIn = event => {
+    event.preventDefault()
+    const { inputEmail, inputPassword } = event.target
+    request('/auth/token','post', {
+      email: inputEmail.value,
+      password: inputPassword.value })
+    .then(response => {
+      this.setState({ showErrorMessage: false })
+      localStorage.setItem('token', response.data.token)
+      return request('/auth/token')
+    })
+    .then(response => {
+      console.log('success!')
+      window.$(`#lsmodal`).modal('close');
+    })
+    .catch(error => {
+      this.setState({showErrorMessage: true})
+    })
+  }
+
+
+  render = () => (
+    <div>
+      <img alt=''src={'./assets/nav-logo.png'} className='modal-image'/>
+      <form className='modal-form' onSubmit={this.handleSignIn}>
+        <input type="email" name='inputEmail' className="validate" placeholder='Email Address'/>
+        <input type="password"  name='inputPassword' className="validate" placeholder='Password'/>
+        <button className='modal-button'>Log In</button>
+        <div className={ !this.state.showErrorMessage ? 'login-auth-error login-hide-auth-error' : 'login-auth-error' }>
+          Invalid Username or Password
+        </div>
+      </form>
+    </div>
+  )
+
+}
 
 export default ModalLogIn

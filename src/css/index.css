@@ -429,3 +429,12 @@ nav {
   height: 40px;
   margin: 40px auto;
 }
+
+.login-hide-auth-error {
+  visibility:hidden;
+}
+
+.login-auth-error {
+  margin-bottom: 5px;
+  text-align: center;
+}

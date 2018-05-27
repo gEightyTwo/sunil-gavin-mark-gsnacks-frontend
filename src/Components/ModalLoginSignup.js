@@ -5,9 +5,9 @@ import ModalLogIn from './ModalLogIn'
 import ModalCreateUser from './ModalCreateUser'
 
 const ModalLoginSignup = props => (
-  <Modal id='lsmodal' actions='' className='modal' style={{height: `${
-    props.modalStatus === 'signup' ? '900px': '450px'
-  }`}}>
+  <Modal id='lsmodal' actions='' className='modal'
+    style={{height: `${props.modalStatus === 'signup' ? '900px': '450px'}`}}
+  >
     {(props.modalStatus === 'login') ? (<ModalLogIn />) : null}
     {(props.modalStatus === 'signup') ? (<ModalCreateUser />) : null}
   </Modal>
