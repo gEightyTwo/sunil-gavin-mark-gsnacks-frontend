@@ -6,7 +6,8 @@ export const GET_USER = 'GET_USER'
 export const GET_AUTH = 'GET_AUTH'
 export const GET_ALL_USERS = 'GET_ALL_USERS'
 
-const API = 'http://localhost:5000'
+// const API = 'http://localhost:5000'
+const API = 'https://safe-inlet-85057.herokuapp.com'
 
 
 export const getAllSnacks = () => (
