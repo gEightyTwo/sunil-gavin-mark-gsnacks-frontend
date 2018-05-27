@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { loginModal, signupModal } from '../actions'
 import ModalLoginSignup from '../Components/ModalLoginSignup'
+import { withAuthentication } from '../helpers'
+
 
 import ModalLogIn from '../Components/ModalLogIn'
 import ModalCreateUser from '../Components/ModalCreateUser'
@@ -32,4 +34,4 @@ const Navbar = (props) => (
 
 const mapDispatchToProps = dispatch => bindActionCreators({loginModal, signupModal}, dispatch)
 
-export default connect(null,mapDispatchToProps)(Navbar)
+export default connect(null,mapDispatchToProps)(withAuthentication(Navbar))
