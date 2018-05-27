@@ -99,3 +99,16 @@ export const signupModal = () => (
     })
   }
 )
+
+
+export const signup = (body) => (
+  dispatch => {
+    axios.post(`${API}/users`,body)
+    .then((response) => {
+      dispatch({
+        type: LOGIN_MODAL,
+      })
+    })
+    .catch(err => console.log(err))
+  }
+)
