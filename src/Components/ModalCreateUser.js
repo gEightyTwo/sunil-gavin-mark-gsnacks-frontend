@@ -2,7 +2,7 @@ import React from 'react'
 import {Col, Row, Modal, Button} from 'react-materialize'
 
 const ModalCreateUser = () => (
-  <Modal id='signup' actions='' className='modal'>
+  <div id='signup'>
     <form className='modal-form'>
     <input type="text" className="validate" placeholder='First Name'/>
     <input type="text" className="validate" placeholder='Last Name'/>
@@ -11,7 +11,7 @@ const ModalCreateUser = () => (
       <input type="text" className="validate" placeholder='Picture URL - http://mywebsite.com/me.jpg'/>
       <button className='modal-button'>Sign Up</button>
     </form>
-  </Modal>
+  </div>
 )
 
 export default ModalCreateUser

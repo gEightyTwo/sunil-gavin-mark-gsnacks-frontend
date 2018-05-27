@@ -1,7 +1,8 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { handleSubmit } from '../actions'
+import { loginModal, signupModal } from '../actions'
+import ModalLoginSignup from '../Components/ModalLoginSignup'
 
 import ModalLogIn from '../Components/ModalLogIn'
 import ModalCreateUser from '../Components/ModalCreateUser'
@@ -11,16 +12,16 @@ import {Col, Row, Modal, Button} from 'react-materialize'
 
 const Navbar = (props) => (
   <nav>
-    <ModalLogIn />
-    <ModalCreateUser />
+
+    <ModalLoginSignup />
 
     <div className='nav bar'>
       <div className='nav logo'>
         <img alt=''src={'./assets/nav-logo.png'} className='nav logo image'/>
       </div>
       <div className='nav links'>
-        <a href="#signup" >Sign Up</a>
-        <a href="#login" >Log In</a>
+        <a href="#lsmodal" onClick={props.signupModal}>Sign Up</a>
+        <a href="#lsmodal" onClick={props.loginModal}>Log In</a>
         <a href="#" className='hidden'>Log Out</a>
 
       </div>
@@ -29,4 +30,6 @@ const Navbar = (props) => (
   </nav>
 )
 
-export default Navbar
+const mapDispatchToProps = dispatch => bindActionCreators({loginModal, signupModal}, dispatch)
+
+export default connect(null,mapDispatchToProps)(Navbar)
