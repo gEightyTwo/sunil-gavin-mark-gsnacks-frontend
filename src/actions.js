@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { request } from './helpers'
+
 
 export const GET_ALL_SNACKS = 'GET_ALL_SNACKS'
 export const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS'
@@ -37,7 +39,7 @@ export const getAllReviews = () => (
 
 export const createReview = (snackId, body) => (
   dispatch => {
-    axios.post(`${API}/api/snacks/${snackId}/reviews`, body)
+    request(`/api/snacks/${snackId}/reviews`,'post', body)
     .then(response => {
       dispatch(getAllReviews())
     })
