@@ -25,22 +25,22 @@ class SnackBasket  extends Component {
         <Row className='card-container'>
           {
             [...Array(4).keys()].map(col=>(
-            <Col s={6} l={3} xl={3} className='hide-on-med-and-down'>
+            <Col s={6} l={3} xl={3} className='hide-on-med-and-down' key={col}>
               {
                 this.props.snackList
                   .filter(el => el.id%4  === col)
-                  .map(el => <Link to={`/${el.id}`}><SnackBasketItem itemData={el} /></Link>)
+                  .map(el => <Link to={`/${el.id}`} key={el.id}><SnackBasketItem itemData={el} /></Link>)
               }
             </Col>
           ))
         }
         {
           [...Array(4).keys()].map(col=>(
-          <Col s={6} l={3} xl={3} className='hide-on-large-only'>
+          <Col s={6} l={3} xl={3} className='hide-on-large-only' key={col}>
             {
               this.props.snackList
                 .filter(el => el.id%2  === col)
-                .map(el => <Link to={`/${el.id}`}><SnackBasketItem itemData={el} /></Link>)
+                .map(el => <Link to={`/${el.id}`} key={el.id}><SnackBasketItem itemData={el} /></Link>)
             }
           </Col>
         ))

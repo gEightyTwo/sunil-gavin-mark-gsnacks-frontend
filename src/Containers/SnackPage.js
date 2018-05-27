@@ -1,5 +1,5 @@
 import React from 'react'
-import {Col, Row, Modal, Button} from 'react-materialize'
+import {Col, Row} from 'react-materialize'
 import CommentBox from './CommentBox'
 import ReviewList from './ReviewList'
 import {connect} from 'react-redux'

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Col, Row, Modal, Button} from 'react-materialize'
+import {Modal} from 'react-materialize'
 import {connect} from 'react-redux'
 import ModalLogIn from './ModalLogIn'
 import ModalCreateUser from './ModalCreateUser'

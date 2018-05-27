@@ -8,7 +8,7 @@ import SnackPage from '../Containers/SnackPage'
 
 import {Col, Row, Modal, Button} from 'react-materialize'
 
-const ReviewCard = ({reviewCardData:{text,title,user_id,rating,updated_at},userData}) => (
+const ReviewCard = ({reviewCardData:{text,title,user_id,rating,updated_at},userData={}}) => (
   <Col s={12} >
 
      <div className='review-card'>

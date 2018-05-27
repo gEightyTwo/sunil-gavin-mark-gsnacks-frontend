@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {Col, Row, Modal, Button} from 'react-materialize'
 import { request, AuthenticationService } from '../helpers'
 
 

@@ -1,5 +1,4 @@
 import React from 'react'
-import {Col, Row, Modal, Button} from 'react-materialize'
 import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux'
 import {loginModal,signup} from '../actions'
