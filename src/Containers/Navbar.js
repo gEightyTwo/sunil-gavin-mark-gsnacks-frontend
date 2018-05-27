@@ -19,7 +19,7 @@ const Navbar = ({authState, signupModal, loginModal}) => (
 
     <div className='nav bar'>
       <div className='nav logo'>
-        <img alt=''src={'./assets/nav-logo.png'} className='nav logo image'/>
+        <a href='/'><img alt=''src={'./assets/nav-logo.png'} className='nav logo image'/></a>
       </div>
         {authState
           ?

@@ -17,8 +17,8 @@ function handleSubmit(event,signup){
 const ModalCreateUser = props => (
   <div id='signup'>
     <form className='modal-form' onSubmit={event=>handleSubmit(event,props.signup)}>
-    <input type="text" name='lastName' className="validate" placeholder='First Name'/>
-    <input type="text" name='firstName' className="validate" placeholder='Last Name'/>
+    <input type="text" name='firstName' className="validate" placeholder='First Name'/>
+    <input type="text" name='lastName' className="validate" placeholder='Last Name'/>
       <input type="email" name='email' className="validate" placeholder='Email Address' required/>
       <input type="password" name='password' className="validate" placeholder='Password' required/>
       <input type="text" name='picture' className="validate" placeholder='Picture URL - http://mywebsite.com/me.jpg'/>

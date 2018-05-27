@@ -13,6 +13,11 @@
   display:none !important;
 }
 
+button:focus, button:active {
+  background-color: rgb(255,90,95);
+}
+
+
 /*  Nav Bar */
 
 nav {
@@ -287,6 +292,13 @@ nav {
   font-weight: 400;
   margin-top: 30px;
 }
+
+
+.disabled-comment-box {
+    background-color:  rgba(245,245,245) !important;
+}
+
+
 
 
 /*  Main Item Details*/
