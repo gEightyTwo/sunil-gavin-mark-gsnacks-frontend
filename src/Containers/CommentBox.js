@@ -15,10 +15,12 @@ class CommentBox extends Component {
 
   constructor(props){
     super(props)
+    this.state={stars: 0}
   }
 
   render(){
     const {first_name, picture} = this.props.authState
+    const stars = this.state.stars
     return (
     <Col s={12} l={5}>
       <div className='message-box'>
@@ -33,11 +35,11 @@ class CommentBox extends Component {
              </div>
            </div>
            <div className='message-box-card-stars'>
-             <i className="fas fa-star" />
-             <i className="fas fa-star" />
-             <i className="fas fa-star" />
-             <i className="fas fa-star" />
-             <i className="fas fa-star" />
+             <i className={`fas fa-star ${stars >= 1 ? 'selected' : null }`} onClick={event=>this.setState({...this.state, stars: 1})}/>
+             <i className={`fas fa-star ${stars >= 2 ? 'selected' : null }`} onClick={event=>this.setState({...this.state, stars: 2})}/>
+             <i className={`fas fa-star ${stars >= 3 ? 'selected' : null }`} onClick={event=>this.setState({...this.state, stars: 3})}/>
+             <i className={`fas fa-star ${stars >= 4 ? 'selected' : null }`} onClick={event=>this.setState({...this.state, stars: 4})}/>
+             <i className={`fas fa-star ${stars >= 5 ? 'selected' : null }`} onClick={event=>this.setState({...this.state, stars: 5})}/>
            </div>
          </div>
 
@@ -53,15 +55,15 @@ class CommentBox extends Component {
 
   handleSubmitReview = event => {
     event.preventDefault()
-    const snackId = 1
     const body = {
       title: 'Title',
       text: event.target.text.value,
-      rating: 3
+      rating: this.state.stars
     }
 
-    this.props.createReview(snackId,body)
+    this.props.createReview(this.props.snackId,body)
     event.target.text.value = ''
+    this.setState({...this.state, stars: 0})
 
   }
 

@@ -22,7 +22,7 @@ const SnackPage = (props) => {
             {snack.description}
           </p>
         </Col>
-        { props.authState  ? <CommentBox /> : <CommentBoxDisabled />}
+        { props.authState  ? <CommentBox snackId={snack.id}/> : <CommentBoxDisabled />}
         <ReviewList snackId={props.match.params.snackId}/>
       </Row>
     </section>

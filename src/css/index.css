@@ -263,9 +263,16 @@ nav {
   font-size: 16px;
 }
 
-.message-box-card-stars i:hover {
+
+.message-box-card-stars i.selected {
   color: rgb(0,132,137);
 }
+
+
+.message-box-card-stars i:hover {
+  /* color: rgb(0,132,137); */
+}
+
 
 .message-box-card-text-input {
   margin-top:20px;
