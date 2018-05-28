@@ -13,7 +13,7 @@ class SnackBasket  extends Component {
   }
 
   singleSnackReviewData(id){
-    return this.props.snackReviews.filter(obj => obj.id.snack_id == id)
+    return this.props.snackReviews.filter(obj => obj.snack_id == id)
   }
 
   render = () => (

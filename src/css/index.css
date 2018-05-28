@@ -169,12 +169,16 @@ nav {
   font-size: 12px;
   margin-left: 1px;
 }
+.card-stars i:last-child {
+  margin-right: 6px;
+}
 
 
-.card-review-count {
+p.card-review-count {
   display: inline-block;
-  margin-left: 4px;
+  margin-left: 0px;
   font-size: 14px;
+  vertical-align: middle;
 }
 
 
