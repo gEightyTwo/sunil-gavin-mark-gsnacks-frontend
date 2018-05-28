@@ -16,13 +16,18 @@ class Body extends Component {
   }
 
   render = () => (
-    <div>
+      <BrowserRouter>
+      <div>
+
       <Banner />
          <Switch>
            <Route exact path='/:snackId' component={ SnackPage } />
            <Route exact path='/' component={ SnackBasket } />
          </Switch>
-  </div>
+       </div>
+
+       </BrowserRouter>
+
   )
 }
 

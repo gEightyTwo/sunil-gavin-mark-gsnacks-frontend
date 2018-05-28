@@ -18,8 +18,8 @@ class ReviewList extends Component {
   }
 
   createStars(i){
-    if(i>=1) return [<i className="fas fa-star" />, ...this.createStars(i-1)]
-    else if(i<1 && i>1) return [<i className="fas fa-star-half" />]
+    if(i>.75) return [<i className="fas fa-star" />, ...this.createStars(i-1)]
+    else if(i>.25) return [<i className="fas fa-star-half" />]
     else return []
   }
 
@@ -38,7 +38,7 @@ class ReviewList extends Component {
           reviewCardData={el}
           userData={this.props.allUsers.find(user => user.id == el.user_id) || {} }
           key={el.id}/>
-      )}
+      ).reverse()}
     </Col>
   )
 }
