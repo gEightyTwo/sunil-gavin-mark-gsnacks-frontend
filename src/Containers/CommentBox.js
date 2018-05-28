@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { createReview } from '../actions'
 import { withAuthentication } from '../helpers'
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 
 import ModalLogIn from '../Components/ModalLogIn'
@@ -31,7 +33,7 @@ class CommentBox extends Component {
              <img alt=''className='message-box-card-user-image' src={picture}/>
              <div className='message-box-card-user-container'>
                <h3 className='message-box-card-username'>{first_name}</h3>
-               <h4 className='message-box-card-date'>May 2018</h4>
+               <h4 className='message-box-card-date'><Moment format="MMM YYYY">{new Date}</Moment></h4>
              </div>
            </div>
            <div className='message-box-card-stars'>

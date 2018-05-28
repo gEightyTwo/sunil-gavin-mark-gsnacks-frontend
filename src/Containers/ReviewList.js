@@ -39,7 +39,7 @@ class ReviewList extends Component {
           reviewCardData={el}
           userData={this.props.allUsers.find(user => user.id == el.user_id)}
           key={el.id}/>
-      )}
+      ).reverse()}
     </Col>
   )
 }

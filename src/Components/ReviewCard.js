@@ -6,9 +6,12 @@ import Banner from './Banner'
 import SnackBasket from '../Containers/SnackBasket'
 import SnackPage from '../Containers/SnackPage'
 
+import { withAuthentication } from '../helpers'
+
+
 import {Col, Row, Modal, Button} from 'react-materialize'
 
-const ReviewCard = ({reviewCardData:{text,title,user_id,rating,updated_at},userData={}}) => (
+const ReviewCard = ({reviewCardData:{text,title,user_id,rating,updated_at},userData={}, authState}) => (
   <Col s={12} >
 
      <div className='review-card'>
@@ -20,10 +23,16 @@ const ReviewCard = ({reviewCardData:{text,title,user_id,rating,updated_at},userD
             <h4 className='review-card-date'> <Moment fromNow>{updated_at}</Moment></h4>
           </div>
         </div>
-        <div className='review-card-actions'>
-          <i className="far fa-edit hidden"></i>
-          <i className="far fa-trash-alt hidden"></i>
-        </div>
+        {
+          authState && authState.id=== user_id
+          ?
+            <div className='review-card-actions'>
+              <i className="far fa-edit" onClick={handleEdit}></i>
+              <i className="far fa-trash-alt" onClick={handleDelete}></i>
+            </div>
+          : null
+        }
+
       </div>
        <div className ='review-card-stars'>
          {[...Array(rating).keys()].map((el)=><i className="fas fa-star" key={el}/>)}
@@ -36,4 +45,15 @@ const ReviewCard = ({reviewCardData:{text,title,user_id,rating,updated_at},userD
 )
 
 
-export default ReviewCard
+const handleDelete = event => {
+  event.preventDefault()
+  console.log('poop!');
+}
+
+
+const handleEdit = event => {
+  event.preventDefault()
+  console.log('edit!');
+}
+
+export default withAuthentication(ReviewCard)
