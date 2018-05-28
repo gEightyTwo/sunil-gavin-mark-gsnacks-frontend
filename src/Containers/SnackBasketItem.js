@@ -23,7 +23,7 @@ class SnackBasketItem extends Component {
       <div className ='card-stars'>
       {this.props.reviewData.length>0?this.createStars(_.mean(this.props.reviewData.map(obj => obj.rating))):''}
       </div>
-      <p className = 'card-review-count'>{`${this.props.reviewData.length} Reviews`}</p>
+      <p className = 'card-review-count'>{`${this.props.reviewData.length} Review${this.props.reviewData.length-1?'s':''}`}</p>
     </Col>
 
   )

@@ -1,10 +1,5 @@
 import React from 'react'
 
-
-
-const Banner = () => (
-  <div className='banner'></div>
-)
-
+const Banner = props => <div className='banner'/>
 
 export default Banner
