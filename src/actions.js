@@ -58,7 +58,7 @@ export const deleteReview = (snackId, reviewId) => (
   dispatch => {
     request(`/api/snacks/${snackId}/reviews/${reviewId}`,'delete')
     .then(response => {
-      dispatch()
+      dispatch(getAllReviews())
     })
   }
 )

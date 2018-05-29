@@ -38,6 +38,8 @@ class ReviewList extends Component {
         <ReviewCard
           reviewCardData={el}
           userData={this.props.allUsers.find(user => user.id == el.user_id) || {} }
+          commentBox = {this.props.commentBox}
+          setActiveReview = {this.props.setActiveReview}
           key={el.id}/>
       ).reverse()}
     </Col>
