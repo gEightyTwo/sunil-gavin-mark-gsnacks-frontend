@@ -1,5 +1,7 @@
 import React from 'react'
 import Moment from 'react-moment';
+import { bindActionCreators } from 'redux'
+import {connect} from 'react-redux'
 import scrollToComponent from 'react-scroll-to-component';
 import 'moment-timezone';
 
@@ -9,11 +11,12 @@ import SnackBasket from '../Containers/SnackBasket'
 import SnackPage from '../Containers/SnackPage'
 
 import { withAuthentication } from '../helpers'
-
+import {deleteReview, modifyReview} from '../actions'
 
 import {Col, Row, Modal, Button} from 'react-materialize'
 
-const ReviewCard = ({reviewCardData:{text,title,user_id,rating,updated_at},userData={}, authState, commentBox}) => (
+const ReviewCard = ({reviewCardData:{id, snack_id, text,title,user_id,rating,updated_at},userData={}, authState, commentBox, deleteReview}) => (
+
   <Col s={12} >
 
      <div className='review-card'>
@@ -30,7 +33,7 @@ const ReviewCard = ({reviewCardData:{text,title,user_id,rating,updated_at},userD
           ?
             <div className='review-card-actions'>
               <i className="far fa-edit" onClick={event => handleEdit(event,commentBox)}></i>
-              <i className="far fa-trash-alt" onClick={handleDelete}></i>
+              <i className="far fa-trash-alt" onClick={() => handleDelete(id, snack_id, deleteReview)}></i>
             </div>
           : null
         }
@@ -47,9 +50,9 @@ const ReviewCard = ({reviewCardData:{text,title,user_id,rating,updated_at},userD
 )
 
 
-const handleDelete = event => {
-  event.preventDefault()
-  console.log('poop!');
+const handleDelete = (id, snackId,deleteReview) => {
+  console.log(id, snackId)
+  deleteReview(snackId, id)
 }
 
 
@@ -59,4 +62,6 @@ const handleEdit = (event, commentBox) => {
   scrollToComponent(commentBox, { offset: 0, align: 'top', duration: 500, ease:'inCirc'})
 }
 
-export default withAuthentication(ReviewCard)
+
+const mapDispatchToProps = dispatch => bindActionCreators({deleteReview}, dispatch)
+export default connect(null,mapDispatchToProps)(withAuthentication(ReviewCard))
