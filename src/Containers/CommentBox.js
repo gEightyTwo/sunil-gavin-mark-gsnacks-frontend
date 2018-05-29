@@ -17,7 +17,7 @@ class CommentBox extends Component {
 
   constructor(props){
     super(props)
-    this.state={stars: 0}
+    this.state={stars: 0, hover: false, hoverStars: 0}
   }
 
   render(){
@@ -37,11 +37,13 @@ class CommentBox extends Component {
              </div>
            </div>
            <div className='message-box-card-stars'>
-             <i className={`fas fa-star ${stars >= 1 ? 'selected' : null }`} onClick={event=>this.setState({...this.state, stars: 1})}/>
-             <i className={`fas fa-star ${stars >= 2 ? 'selected' : null }`} onClick={event=>this.setState({...this.state, stars: 2})}/>
-             <i className={`fas fa-star ${stars >= 3 ? 'selected' : null }`} onClick={event=>this.setState({...this.state, stars: 3})}/>
-             <i className={`fas fa-star ${stars >= 4 ? 'selected' : null }`} onClick={event=>this.setState({...this.state, stars: 4})}/>
-             <i className={`fas fa-star ${stars >= 5 ? 'selected' : null }`} onClick={event=>this.setState({...this.state, stars: 5})}/>
+             {[...Array(5).keys()].map(n=><i
+               className={`fas fa-star ${this.setSelected(n+1)}`}
+               onClick={()=>this.handleClick(n+1)}
+               onMouseOver={()=>this.handleMouseOver(n+1)}
+               onMouseOut={this.handleMouseOut}
+               key = {n+1}
+             />)}
            </div>
          </div>
 
@@ -67,6 +69,25 @@ class CommentBox extends Component {
     event.target.text.value = ''
     this.setState({...this.state, stars: 0})
 
+  }
+
+  setSelected = n => {
+    if (this.state.hover) {
+      return this.state.hoverStars >= n ? 'selected' : null
+    }
+    return this.state.stars >= n ? 'selected' : null
+  }
+
+  handleMouseOver = n => {
+    this.setState({...this.state, hoverStars: n, hover: true})
+  }
+
+  handleMouseOut = () => {
+    this.setState({...this.state, hoverStars: 0, hover: false})
+  }
+
+  handleClick = n => {
+    this.setState({...this.state, stars: n})
   }
 
 }

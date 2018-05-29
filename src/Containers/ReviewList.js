@@ -18,7 +18,7 @@ class ReviewList extends Component {
   }
 
   createStars(i){
-    if(i>.75) return [<i className="fas fa-star" />, ...this.createStars(i-1)]
+    if(i>.75) return [<i className="fas fa-star" key={i}/>, ...this.createStars(i-1)]
     else if(i>.25) return [<i className="fas fa-star-half" />]
     else return []
   }
