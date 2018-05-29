@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
-import {Col, Row, Modal, Button} from 'react-materialize'
 import { request, AuthenticationService } from '../helpers'
-import { withRouter } from 'react-router-dom'
 
 
 class ModalLogIn extends Component {
@@ -27,8 +25,17 @@ class ModalLogIn extends Component {
     })
     .then(response => {
       AuthenticationService.setAuthState(response.data)
-      this.props.history.push('/')
+      return request('/users')
     })
+    .then(response => {
+      console.log(AuthenticationService.getAuthState());
+      console.log(response.data.data);
+        const authState = AuthenticationService.getAuthState()
+        const activeUser = response.data.data.find(el => el.id === authState.id)
+        AuthenticationService.setAuthState(activeUser)
+        console.log(`Active User: ${activeUser.first_name} ${activeUser.last_name}`)
+        window.$(`#lsmodal`).modal('close');
+      })
     .catch(error => {
       this.setState({showErrorMessage: true})
     })
@@ -36,15 +43,19 @@ class ModalLogIn extends Component {
 
 
   render = () => (
-    <Modal id='login' actions='' className='modal'>
+    <div>
       <img alt=''src={'./assets/nav-logo.png'} className='modal-image'/>
       <form className='modal-form' onSubmit={this.handleSignIn}>
-        <input name='inputEmail' type="email" className="validate" placeholder='Email Address' required/>
-        <input name='inputPassword' type="password" className="validate" placeholder='Password' required/>
+        <input type="email" name='inputEmail' className="validate" placeholder='Email Address'/>
+        <input type="password"  name='inputPassword' className="validate" placeholder='Password'/>
         <button className='modal-button'>Log In</button>
+        <div className={ !this.state.showErrorMessage ? 'login-auth-error login-hide-auth-error' : 'login-auth-error' }>
+          Invalid Username or Password
+        </div>
       </form>
-    </Modal>
+    </div>
   )
+
 }
 
-export default withRouter(ModalLogIn)
+export default ModalLogIn

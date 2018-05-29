@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import { GET_ALL_SNACKS, GET_ALL_REVIEWS, GET_USER, GET_AUTH, GET_ALL_USERS } from './actions'
+import { GET_ALL_SNACKS, GET_ALL_REVIEWS, GET_USER, GET_AUTH, GET_ALL_USERS, LOGIN_MODAL, SIGNUP_MODAL } from './actions'
 
 const INITIAL_VALUE = []
 
@@ -39,4 +39,14 @@ const allUsers = (state = INITIAL_VALUE, action) => {
   }
 }
 
-export default combineReducers({ snackList, snackReviews, user, auth, allUsers })
+const modalStatus = (state = null, action) => {
+  console.log('updating');
+  switch(action.type){
+    case LOGIN_MODAL: return 'login'
+    case SIGNUP_MODAL: return 'signup'
+    default: return state
+  }
+
+}
+
+export default combineReducers({ snackList, snackReviews, user, auth, allUsers,modalStatus })

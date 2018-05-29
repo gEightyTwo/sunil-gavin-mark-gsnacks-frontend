@@ -1,8 +1,11 @@
 import React from 'react'
-import {Col, Row, Modal, Button} from 'react-materialize'
+import {Col, Row} from 'react-materialize'
 import CommentBox from './CommentBox'
+import CommentBoxDisabled from './CommentBoxDisabled'
+
 import ReviewList from './ReviewList'
 import {connect} from 'react-redux'
+import { withAuthentication } from '../helpers'
 
 
 const SnackPage = (props) => {
@@ -19,7 +22,7 @@ const SnackPage = (props) => {
             {snack.description}
           </p>
         </Col>
-        { true  ? <CommentBox /> : <CommentBox />}
+        { props.authState  ? <CommentBox snackId={snack.id}/> : <CommentBoxDisabled />}
         <ReviewList snackId={props.match.params.snackId}/>
       </Row>
     </section>
@@ -27,4 +30,4 @@ const SnackPage = (props) => {
 )}
 
 const mapStateToProps = ({snackList}) => ({snackList})
-export default connect(mapStateToProps)(SnackPage)
+export default connect(mapStateToProps)(withAuthentication(SnackPage))

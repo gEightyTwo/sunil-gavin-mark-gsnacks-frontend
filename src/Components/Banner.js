@@ -1,11 +1,5 @@
 import React from 'react'
-import {Col, Row, Modal, Button} from 'react-materialize'
 
-
-
-const Banner = () => (
-  <div className='banner'></div>
-)
-
+const Banner = props => <div className='banner'/>
 
 export default Banner

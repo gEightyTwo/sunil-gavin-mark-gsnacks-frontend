@@ -1,10 +1,14 @@
 import axios from 'axios'
+import { request } from './helpers'
+
 
 export const GET_ALL_SNACKS = 'GET_ALL_SNACKS'
 export const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS'
 export const GET_USER = 'GET_USER'
 export const GET_AUTH = 'GET_AUTH'
 export const GET_ALL_USERS = 'GET_ALL_USERS'
+export const LOGIN_MODAL = 'LOGIN_MODAL'
+export const SIGNUP_MODAL = 'SIGNUP_MODAL'
 
 const API = 'http://localhost:5000'
 
@@ -35,7 +39,7 @@ export const getAllReviews = () => (
 
 export const createReview = (snackId, body) => (
   dispatch => {
-    axios.post(`${API}/api/snacks/${snackId}/reviews`, body)
+    request(`/api/snacks/${snackId}/reviews`,'post', body)
     .then(response => {
       dispatch(getAllReviews())
     })
@@ -76,5 +80,37 @@ export const getAuth = () => (
         payload: response.data.data
       })
     })
+  }
+)
+
+export const loginModal = () => {
+  console.log('hi');
+  return (
+  dispatch => {
+    dispatch({
+      type: LOGIN_MODAL
+    })
+  }
+)}
+
+
+export const signupModal = () => (
+  dispatch => {
+    dispatch({
+      type: SIGNUP_MODAL
+    })
+  }
+)
+
+
+export const signup = (body) => (
+  dispatch => {
+    axios.post(`${API}/users`,body)
+    .then((response) => {
+      dispatch({
+        type: LOGIN_MODAL,
+      })
+    })
+    .catch(err => console.log(err))
   }
 )

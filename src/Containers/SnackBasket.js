@@ -13,7 +13,7 @@ class SnackBasket  extends Component {
   }
 
   singleSnackReviewData(id){
-    return this.props.snackReviews.filter(obj => obj.id.snack_id == id)
+    return this.props.snackReviews.filter(obj => obj.snack_id == id)
   }
 
   render = () => (
@@ -33,7 +33,7 @@ class SnackBasket  extends Component {
                 {
                   this.props.snackList
                     .filter(el => el.id%4  === col)
-                    .map(el => <Link to={`/${el.id}`}><SnackBasketItem itemData={el} reviewData={this.singleSnackReviewData(el.id)}/></Link>)
+                    .map(el => <Link to={`/${el.id}`} key={el.id}><SnackBasketItem itemData={el} reviewData={this.singleSnackReviewData(el.id)}/></Link>)
                 }
               </Col>
             ))
@@ -44,7 +44,7 @@ class SnackBasket  extends Component {
                 {
                   this.props.snackList
                     .filter(el => el.id%2  === col)
-                    .map(el => <Link to={`/${el.id}`}><SnackBasketItem itemData={el} reviewData={this.singleSnackReviewData(el.id)} /></Link>)
+                    .map(el => <Link to={`/${el.id}`} key={el.id}><SnackBasketItem itemData={el} reviewData={this.singleSnackReviewData(el.id)} /></Link>)
                 }
               </Col>
             ))
