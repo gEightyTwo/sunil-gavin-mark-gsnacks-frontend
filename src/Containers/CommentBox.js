@@ -20,14 +20,18 @@ class CommentBox extends Component {
     this.state={stars: 0, hover: false, hoverStars: 0}
   }
 
+
   render(){
     const {first_name, picture} = this.props.authState
     const stars = this.state.stars
+    const {rating, text, id} = this.props.activeReview
+    if (id) this.setState({...this.state, stars: rating})
+
     return (
     <Col s={12} l={5}>
       <div className='message-box'>
 
-      <form className='message-box-card' onSubmit={this.handleSubmitReview}>
+      <form className='message-box-card' onSubmit={id ? event => this.handleEditReview(event,id) : this.handleSubmitReview}>
         <div className='message-box-card-header'>
           <div>
              <img alt=''className='message-box-card-user-image' src={picture}/>
@@ -47,9 +51,9 @@ class CommentBox extends Component {
            </div>
          </div>
 
-        <textarea className='message-box-card-text-input' placeholder='What did you think about this snack?' name='text'></textarea>
+        <textarea className='message-box-card-text-input' placeholder='What did you think about this snack?' name='text'>{text}</textarea>
 
-        <button className='message-box-card-submit-button' type="submit">Submit Review</button>
+        <button className='message-box-card-submit-button' type="submit">{id ? 'Edit Review': 'Submit Review'}</button>
       </form>
 
 
@@ -70,6 +74,22 @@ class CommentBox extends Component {
     this.setState({...this.state, stars: 0})
 
   }
+
+  handleEditReview = (event,id) => {
+    event.preventDefault()
+    const body = {
+      title: 'Title',
+      text: event.target.text.value,
+      rating: this.state.stars
+    }
+
+    this.props.editReview(this.props.snackId,id,body)
+    event.target.text.value = ''
+    this.setState({...this.state, stars: 0})
+    this.setActiveReview({})
+
+  }
+
 
   setSelected = n => {
     if (this.state.hover) {

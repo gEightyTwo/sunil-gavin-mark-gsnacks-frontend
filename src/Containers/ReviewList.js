@@ -25,6 +25,7 @@ class ReviewList extends Component {
 
   render = () => (
     <Col s={12} l={7}>
+      {console.log(this.props)}
       <Col s={12} >
          <div className='item-page-reviews-container'>
            <p className = 'item-page-card-review-count'>{this.props.snackReviews.filter(el => el.snack_id == this.props.snackId).length} Reviews</p>
@@ -37,6 +38,8 @@ class ReviewList extends Component {
         <ReviewCard
           reviewCardData={el}
           userData={this.props.allUsers.find(user => user.id == el.user_id) || {} }
+          commentBox = {this.props.commentBox}
+          setActiveReview = {this.props.setActiveReview}
           key={el.id}/>
       ).reverse()}
     </Col>

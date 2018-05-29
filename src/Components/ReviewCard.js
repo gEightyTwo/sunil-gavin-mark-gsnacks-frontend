@@ -1,6 +1,8 @@
 import React from 'react'
 import Moment from 'react-moment';
+import scrollToComponent from 'react-scroll-to-component';
 import 'moment-timezone';
+
 
 import Banner from './Banner'
 import SnackBasket from '../Containers/SnackBasket'
@@ -11,7 +13,7 @@ import { withAuthentication } from '../helpers'
 
 import {Col, Row, Modal, Button} from 'react-materialize'
 
-const ReviewCard = ({reviewCardData:{text,title,user_id,rating,updated_at},userData={}, authState}) => (
+const ReviewCard = ({reviewCardData:{text,title,user_id,rating,updated_at},userData={}, authState, commentBox}) => (
   <Col s={12} >
 
      <div className='review-card'>
@@ -27,7 +29,7 @@ const ReviewCard = ({reviewCardData:{text,title,user_id,rating,updated_at},userD
           authState && authState.id=== user_id
           ?
             <div className='review-card-actions'>
-              <i className="far fa-edit" onClick={handleEdit}></i>
+              <i className="far fa-edit" onClick={event => handleEdit(event,commentBox)}></i>
               <i className="far fa-trash-alt" onClick={handleDelete}></i>
             </div>
           : null
@@ -51,9 +53,10 @@ const handleDelete = event => {
 }
 
 
-const handleEdit = event => {
+const handleEdit = (event, commentBox) => {
   event.preventDefault()
   console.log('edit!');
+  scrollToComponent(commentBox, { offset: 0, align: 'top', duration: 500, ease:'inCirc'})
 }
 
 export default withAuthentication(ReviewCard)
