@@ -7,11 +7,11 @@ import SnackBasket from '../Containers/SnackBasket'
 import SnackPage from '../Containers/SnackPage'
 
 import { withAuthentication } from '../helpers'
-
+import {deleteReview, modifyReview} from '../actions'
 
 import {Col, Row, Modal, Button} from 'react-materialize'
 
-const ReviewCard = ({reviewCardData:{text,title,user_id,rating,updated_at},userData={}, authState}) => (
+const ReviewCard = ({reviewCardData:{id,snackId,text,title,user_id,rating,updated_at},userData={}, authState}) => (
   <Col s={12} >
 
      <div className='review-card'>
@@ -28,7 +28,7 @@ const ReviewCard = ({reviewCardData:{text,title,user_id,rating,updated_at},userD
           ?
             <div className='review-card-actions'>
               <i className="far fa-edit" onClick={handleEdit}></i>
-              <i className="far fa-trash-alt" onClick={handleDelete}></i>
+              <i className="far fa-trash-alt" onClick={() => handleDelete(this.id, this.snackId)}></i>
             </div>
           : null
         }
@@ -45,9 +45,8 @@ const ReviewCard = ({reviewCardData:{text,title,user_id,rating,updated_at},userD
 )
 
 
-const handleDelete = event => {
-  event.preventDefault()
-  console.log('poop!');
+const handleDelete = (id, snackId) => {
+  deleteReview(id, snackId)
 }
 
 

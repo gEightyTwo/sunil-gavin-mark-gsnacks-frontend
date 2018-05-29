@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { request } from './helpers'
 
-
 export const GET_ALL_SNACKS = 'GET_ALL_SNACKS'
 export const GET_ALL_REVIEWS = 'GET_ALL_REVIEWS'
 export const GET_USER = 'GET_USER'
@@ -46,6 +45,24 @@ export const createReview = (snackId, body) => (
   }
 )
 
+export const editReview = (snackId, reviewId, body) => (
+  dispatch => {
+    request(`/api/snacks/${snackId}/reviews/${reviewId}`,'patch',body)
+    .then(response => {
+      dispatch(getAllReviews())
+    })
+  }
+)
+
+export const deleteReview = (snackId, reviewId) => (
+  dispatch => {
+    request(`/api/snacks/${snackId}/reviews/${reviewId}`,'delete')
+    .then(response => {
+      dispatch()
+    })
+  }
+)
+
 export const getUser = () => (
   dispatch => {
     axios.get(`${API}/users/`)
@@ -84,7 +101,6 @@ export const getAuth = () => (
 )
 
 export const loginModal = () => {
-  console.log('hi');
   return (
   dispatch => {
     dispatch({
