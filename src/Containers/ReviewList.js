@@ -25,6 +25,7 @@ class ReviewList extends Component {
 
   render = () => (
     <Col s={12} l={7}>
+
       <Col s={12} >
          <div className='item-page-reviews-container'>
            <p className = 'item-page-card-review-count'>{this.props.snackReviews.filter(el => el.snack_id == this.props.snackId).length} Reviews</p>

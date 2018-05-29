@@ -45,7 +45,5 @@ const handleLogout = (setAuthState) => {
     AuthenticationService.setAuthState(null)
 }
 
-
-
 const mapDispatchToProps = dispatch => bindActionCreators({loginModal, signupModal}, dispatch)
 export default connect(null,mapDispatchToProps)(withAuthentication(Navbar))

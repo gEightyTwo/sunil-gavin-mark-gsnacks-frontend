@@ -40,7 +40,6 @@ const allUsers = (state = INITIAL_VALUE, action) => {
 }
 
 const modalStatus = (state = null, action) => {
-  console.log('updating');
   switch(action.type){
     case LOGIN_MODAL: return 'login'
     case SIGNUP_MODAL: return 'signup'
