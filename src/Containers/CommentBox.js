@@ -100,7 +100,7 @@ class CommentBox extends Component {
     console.log(this.props.snackId,id,body);
     this.props.editReview(this.props.snackId,id,body)
     event.target.text.value = ''
-    this.setState({...this.state, stars: 0})
+    this.setState({...this.state, stars: 0, text: ''})
     this.props.setActiveReview({})
 
   }
