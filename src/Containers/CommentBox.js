@@ -6,23 +6,15 @@ import { withAuthentication } from '../helpers'
 import Moment from 'react-moment';
 import 'moment-timezone';
 
-
-import ModalLogIn from '../Components/ModalLogIn'
-import ModalCreateUser from '../Components/ModalCreateUser'
-
-import {Col, Row, Modal, Button} from 'react-materialize'
-
+import {Col} from 'react-materialize'
 
 class CommentBox extends Component {
-
   constructor(props){
     super(props)
     this.state={text: '', stars: 0, hover: false, hoverStars: 0}
   }
 
-
   static getDerivedStateFromProps(props,state){
-    console.log(props,state)
     const {rating, text, id} = props.activeReview
     if (rating && rating !== state.stars) {
       return {...state, stars: rating, text: text}
@@ -30,17 +22,14 @@ class CommentBox extends Component {
     return state
   }
 
-
   render(){
     const {first_name, picture} = this.props.authState
     const stars = this.state.stars
     const {rating, text, id} = this.props.activeReview
 
-
     return (
     <Col s={12} l={5}>
       <div className='message-box'>
-
       <form className='message-box-card' onSubmit={id ? event => this.handleEditReview(event,id) : this.handleSubmitReview}>
         <div className='message-box-card-header'>
           <div>
@@ -60,7 +49,6 @@ class CommentBox extends Component {
              />)}
            </div>
          </div>
-
         <textarea
           className='message-box-card-text-input'
           placeholder='What did you think about this snack?'
@@ -70,8 +58,6 @@ class CommentBox extends Component {
         />
         <button className='message-box-card-submit-button' type="submit">{id ? 'Edit Review': 'Submit Review'}</button>
       </form>
-
-
       </div>
     </Col>
   )}
@@ -87,7 +73,6 @@ class CommentBox extends Component {
     this.props.createReview(this.props.snackId,body)
     event.target.text.value = ''
     this.setState({...this.state, stars: 0})
-
   }
 
   handleEditReview = (event,id) => {
@@ -97,14 +82,12 @@ class CommentBox extends Component {
       text: event.target.text.value,
       rating: this.state.stars
     }
-    console.log(this.props.snackId,id,body);
+    //console.log(this.props.snackId,id,body);
     this.props.editReview(this.props.snackId,id,body)
     event.target.text.value = ''
     this.setState({...this.state, stars: 0, text: ''})
     this.props.setActiveReview({})
-
   }
-
 
   setSelected = n => {
     if (this.state.hover) {
@@ -125,7 +108,6 @@ class CommentBox extends Component {
     this.setState({...this.state, stars: n})
     this.props.activeReview.rating = n
   }
-
 
 }
 

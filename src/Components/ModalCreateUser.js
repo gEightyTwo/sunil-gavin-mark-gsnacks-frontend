@@ -10,7 +10,6 @@ function handleSubmit(event,signup){
   const first_name= event.target.firstName.value
   const last_name= event.target.lastName.value
   const picture= event.target.picture.value
-  console.log({email, password, first_name, last_name, picture});
   signup({email, password, first_name, last_name, picture})
 }
 

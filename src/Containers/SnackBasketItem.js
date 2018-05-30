@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Col, Row, Modal, Button} from 'react-materialize'
+import {Col} from 'react-materialize'
 import _ from 'lodash'
 
 class SnackBasketItem extends Component {
@@ -10,8 +10,8 @@ class SnackBasketItem extends Component {
   }
 
   createStars(i){
-    if(i>.75) return [<i className="fas fa-star" />, ...this.createStars(i-1)]
-    else if(i>.25) return [<i className="fas fa-star-half" />]
+    if(i>.75) return [<i key={i} className="fas fa-star" />, ...this.createStars(i-1)]
+    else if(i>.25) return [<i key={i} className="fas fa-star-half" />]
     else return []
   }
   render = () => (
@@ -28,6 +28,5 @@ class SnackBasketItem extends Component {
 
   )
 }
-
 
 export default SnackBasketItem

@@ -1,4 +1,0 @@
-## Team
-* Sunil
-* Gavin
-* Mark

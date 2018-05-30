@@ -5,20 +5,18 @@ import {connect} from 'react-redux'
 import scrollToComponent from 'react-scroll-to-component';
 import 'moment-timezone';
 
-
-import Banner from './Banner'
-import SnackBasket from '../Containers/SnackBasket'
-import SnackPage from '../Containers/SnackPage'
+// import Banner from './Banner'
+// import SnackBasket from '../Containers/SnackBasket'
+// import SnackPage from '../Containers/SnackPage'
 
 import { withAuthentication } from '../helpers'
 import {deleteReview, modifyReview} from '../actions'
 
-import {Col, Row, Modal, Button} from 'react-materialize'
+import {Col} from 'react-materialize'
 
 const ReviewCard = ({reviewCardData:{id, snack_id, text,title,user_id,rating,updated_at},userData={}, authState, commentBox, deleteReview, setActiveReview}) => (
 
   <Col s={12} >
-
      <div className='review-card'>
      <div className='review-card-header'>
        <div>
@@ -37,7 +35,6 @@ const ReviewCard = ({reviewCardData:{id, snack_id, text,title,user_id,rating,upd
             </div>
           : null
         }
-
       </div>
        <div className ='review-card-stars'>
          {[...Array(rating).keys()].map((el)=><i className="fas fa-star" key={el}/>)}
@@ -51,14 +48,12 @@ const ReviewCard = ({reviewCardData:{id, snack_id, text,title,user_id,rating,upd
 
 
 const handleDelete = (id, snackId,deleteReview) => {
-  console.log(id, snackId)
   deleteReview(snackId, id)
 }
 
 
 const handleEdit = (event, commentBox, setActiveReview, body) => {
   event.preventDefault()
-  console.log('edit!');
   scrollToComponent(commentBox, { offset: 0, align: 'top', duration: 500, ease:'inCirc'})
   setActiveReview(body)
 }

@@ -5,18 +5,14 @@ import { loginModal, signupModal } from '../actions'
 import ModalLoginSignup from '../Components/ModalLoginSignup'
 import { withAuthentication, AuthenticationService } from '../helpers'
 
-
 import ModalLogIn from '../Components/ModalLogIn'
 import ModalCreateUser from '../Components/ModalCreateUser'
 
 import {Col, Row, Modal, Button} from 'react-materialize'
 
-
 const Navbar = ({authState, signupModal, loginModal}) => (
   <nav>
-
     <ModalLoginSignup />
-
     <div className='nav bar'>
       <div className='nav logo'>
         <a href='/'><img alt=''src={'./assets/nav-logo.png'} className='nav logo image'/></a>
@@ -34,9 +30,7 @@ const Navbar = ({authState, signupModal, loginModal}) => (
               <a href="#lsmodal" onClick={loginModal}>Log In</a>
             </div>
         }
-
     </div>
-
   </nav>
 )
 

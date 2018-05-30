@@ -7,19 +7,15 @@ import ReviewList from './ReviewList'
 import {connect} from 'react-redux'
 import { withAuthentication } from '../helpers'
 
-
 class SnackPage extends Component {
-
   constructor(props){
     super(props)
     this.state = {activeReview: {id:null, text:'', rating:null}}
   }
 
-
   setActiveReview = review => {
     review.id !== this.state.activeReview.id ? this.setState({...this.state, activeReview: review}) : null
   }
-
 
  render(){
   const snack = this.props.snackList.find(el => el.id == this.props.match.params.snackId) || {}

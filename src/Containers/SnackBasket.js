@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import {Col, Row, Modal, Button} from 'react-materialize'
+import {Col, Row} from 'react-materialize'
 import SnackBasketItem from './SnackBasketItem'
 
 import {Link} from 'react-router-dom'
@@ -13,7 +13,7 @@ class SnackBasket  extends Component {
   }
 
   singleSnackReviewData(id){
-    return this.props.snackReviews.filter(obj => obj.snack_id == id)
+    return this.props.snackReviews.filter(obj => obj.snack_id === id)
   }
 
   render = () => (
@@ -29,7 +29,7 @@ class SnackBasket  extends Component {
         <Row className='card-container'>
           {
             [...Array(4).keys()].map(col=>(
-              <Col s={6} l={3} xl={3} className='hide-on-med-and-down'>
+              <Col s={6} l={3} xl={3} key={col} className='hide-on-med-and-down'>
                 {
                   this.props.snackList
                     .filter(el => el.id%4  === col)
@@ -40,7 +40,7 @@ class SnackBasket  extends Component {
           }
           {
             [...Array(4).keys()].map(col=>(
-              <Col s={6} l={3} xl={3} className='hide-on-large-only'>
+              <Col s={6} l={3} xl={3} key={col} className='hide-on-large-only'>
                 {
                   this.props.snackList
                     .filter(el => el.id%2  === col)
