@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { createReview } from '../actions'
+import { createReview, editReview } from '../actions'
 import { withAuthentication } from '../helpers'
 import Moment from 'react-moment';
 import 'moment-timezone';
@@ -17,7 +17,17 @@ class CommentBox extends Component {
 
   constructor(props){
     super(props)
-    this.state={stars: 0, hover: false, hoverStars: 0}
+    this.state={text: '', stars: 0, hover: false, hoverStars: 0}
+  }
+
+
+  static getDerivedStateFromProps(props,state){
+    console.log(props,state)
+    const {rating, text, id} = props.activeReview
+    if (rating && rating !== state.stars) {
+      return {...state, stars: rating, text: text}
+    }
+    return state
   }
 
 
@@ -25,7 +35,7 @@ class CommentBox extends Component {
     const {first_name, picture} = this.props.authState
     const stars = this.state.stars
     const {rating, text, id} = this.props.activeReview
-    if (id) this.setState({...this.state, stars: rating})
+
 
     return (
     <Col s={12} l={5}>
@@ -51,8 +61,13 @@ class CommentBox extends Component {
            </div>
          </div>
 
-        <textarea className='message-box-card-text-input' placeholder='What did you think about this snack?' name='text'>{text}</textarea>
-
+        <textarea
+          className='message-box-card-text-input'
+          placeholder='What did you think about this snack?'
+          name='text' text='asdasd'
+          value={this.state.text}
+          onChange={event=>this.setState({text:event.target.value})}
+        />
         <button className='message-box-card-submit-button' type="submit">{id ? 'Edit Review': 'Submit Review'}</button>
       </form>
 
@@ -82,11 +97,11 @@ class CommentBox extends Component {
       text: event.target.text.value,
       rating: this.state.stars
     }
-
+    console.log(this.props.snackId,id,body);
     this.props.editReview(this.props.snackId,id,body)
     event.target.text.value = ''
     this.setState({...this.state, stars: 0})
-    this.setActiveReview({})
+    this.props.setActiveReview({})
 
   }
 
@@ -108,9 +123,11 @@ class CommentBox extends Component {
 
   handleClick = n => {
     this.setState({...this.state, stars: n})
+    this.props.activeReview.rating = n
   }
+
 
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({createReview}, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({createReview, editReview}, dispatch)
 export default connect(null,mapDispatchToProps)(withAuthentication(CommentBox))
