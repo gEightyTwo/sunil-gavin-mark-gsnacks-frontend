@@ -2,11 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import _ from 'lodash'
+import {Col} from 'react-materialize'
 
 import ReviewCard from '../Components/ReviewCard'
 import {getAllUsers} from '../actions'
-
-import {Col, Row, Modal, Button} from 'react-materialize'
 
 class ReviewList extends Component {
   constructor(props){
@@ -19,13 +18,12 @@ class ReviewList extends Component {
 
   createStars(i){
     if(i>.75) return [<i className="fas fa-star" key={i}/>, ...this.createStars(i-1)]
-    else if(i>.25) return [<i className="fas fa-star-half" />]
+    else if(i>.25) return [<i className="fas fa-star-half" key={i}/>]
     else return []
   }
 
   render = () => (
     <Col s={12} l={7}>
-
       <Col s={12} >
          <div className='item-page-reviews-container'>
            <p className = 'item-page-card-review-count'>{this.props.snackReviews.filter(el => el.snack_id == this.props.snackId).length} Reviews</p>

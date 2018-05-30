@@ -45,7 +45,6 @@ const modalStatus = (state = null, action) => {
     case SIGNUP_MODAL: return 'signup'
     default: return state
   }
-
 }
 
 export default combineReducers({ snackList, snackReviews, user, auth, allUsers,modalStatus })

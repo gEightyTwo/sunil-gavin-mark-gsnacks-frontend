@@ -28,19 +28,15 @@ class ModalLogIn extends Component {
       return request('/users')
     })
     .then(response => {
-      // console.log(AuthenticationService.getAuthState());
-      // console.log(response.data.data);
         const authState = AuthenticationService.getAuthState()
         const activeUser = response.data.data.find(el => el.id === authState.id)
         AuthenticationService.setAuthState(activeUser)
-        // console.log(`Active User: ${activeUser.first_name} ${activeUser.last_name}`)
         window.$(`#lsmodal`).modal('close');
       })
     .catch(error => {
       this.setState({showErrorMessage: true})
     })
   }
-
 
   render = () => (
     <div>
@@ -55,7 +51,6 @@ class ModalLogIn extends Component {
       </form>
     </div>
   )
-
 }
 
 export default ModalLogIn
