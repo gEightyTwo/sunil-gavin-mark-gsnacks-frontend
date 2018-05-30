@@ -12,7 +12,7 @@ class SnackPage extends Component {
 
   constructor(props){
     super(props)
-    this.state = {activeReview: {}}
+    this.state = {activeReview: {id:null, text:'', rating:null}}
   }
 
 

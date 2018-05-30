@@ -17,18 +17,24 @@ class CommentBox extends Component {
 
   constructor(props){
     super(props)
-    this.state={stars: 0, hover: false, hoverStars: 0}
+    this.state={text: '', stars: 0, hover: false, hoverStars: 0}
   }
 
+
+  static getDerivedStateFromProps(props,state){
+    console.log(props,state)
+    const {rating, text, id} = props.activeReview
+    if (rating && rating !== state.stars) {
+      return {...state, stars: rating, text: text}
+    }
+    return state
+  }
 
 
   render(){
     const {first_name, picture} = this.props.authState
     const stars = this.state.stars
     const {rating, text, id} = this.props.activeReview
-    if (rating && rating !== this.state.stars) {
-      this.setState({...this.state, stars: rating})
-    }
 
 
     return (
@@ -55,7 +61,13 @@ class CommentBox extends Component {
            </div>
          </div>
 
-        <textarea className='message-box-card-text-input' placeholder='What did you think about this snack?' name='text' text='asdasd' value={text}/>
+        <textarea
+          className='message-box-card-text-input'
+          placeholder='What did you think about this snack?'
+          name='text' text='asdasd'
+          value={this.state.text}
+          onChange={event=>this.setState({text:event.target.value})}
+        />
         <button className='message-box-card-submit-button' type="submit">{id ? 'Edit Review': 'Submit Review'}</button>
       </form>
 
