@@ -17,7 +17,7 @@ class SnackPage extends Component {
 
 
   setActiveReview = review => {
-    this.setState({...this.state, activeReview: review})
+    review.id !== this.state.activeReview.id ? this.setState({...this.state, activeReview: review}) : null
   }
 
 

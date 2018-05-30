@@ -15,7 +15,7 @@ import {deleteReview, modifyReview} from '../actions'
 
 import {Col, Row, Modal, Button} from 'react-materialize'
 
-const ReviewCard = ({reviewCardData:{id, snack_id, text,title,user_id,rating,updated_at},userData={}, authState, commentBox, deleteReview}) => (
+const ReviewCard = ({reviewCardData:{id, snack_id, text,title,user_id,rating,updated_at},userData={}, authState, commentBox, deleteReview, setActiveReview}) => (
 
   <Col s={12} >
 
@@ -32,7 +32,7 @@ const ReviewCard = ({reviewCardData:{id, snack_id, text,title,user_id,rating,upd
           authState && authState.id=== user_id
           ?
             <div className='review-card-actions'>
-              <i className="far fa-edit" onClick={event => handleEdit(event,commentBox)}></i>
+              <i className="far fa-edit" onClick={event => handleEdit(event,commentBox, setActiveReview, {id, text, rating})}></i>
               <i className="far fa-trash-alt" onClick={() => handleDelete(id, snack_id, deleteReview)}></i>
             </div>
           : null
@@ -56,10 +56,11 @@ const handleDelete = (id, snackId,deleteReview) => {
 }
 
 
-const handleEdit = (event, commentBox) => {
+const handleEdit = (event, commentBox, setActiveReview, body) => {
   event.preventDefault()
   console.log('edit!');
   scrollToComponent(commentBox, { offset: 0, align: 'top', duration: 500, ease:'inCirc'})
+  setActiveReview(body)
 }
 
 

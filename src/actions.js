@@ -45,14 +45,17 @@ export const createReview = (snackId, body) => (
   }
 )
 
-export const editReview = (snackId, reviewId, body) => (
+export const editReview = (snackId, reviewId, body) => {
+  console.log(`/api/snacks/${snackId}/reviews/${reviewId}`);
+  return (
   dispatch => {
-    request(`/api/snacks/${snackId}/reviews/${reviewId}`,'patch',body)
+    console.log(body)
+    request(`/api/snacks/${snackId}/reviews/${reviewId}`,'put', body)
     .then(response => {
       dispatch(getAllReviews())
     })
   }
-)
+)}
 
 export const deleteReview = (snackId, reviewId) => (
   dispatch => {
