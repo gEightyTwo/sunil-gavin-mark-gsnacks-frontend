@@ -28,7 +28,7 @@ Install dependent node modules:
 Start the development server:
 
 ```shell
-npm start
+* npm start
 ```
 
 ## Deployment
