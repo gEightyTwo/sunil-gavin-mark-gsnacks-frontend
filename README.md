@@ -42,7 +42,6 @@ This project has been deployed on Heroku at the address:
 * [React](https://reactjs.org/) - Frontend library
 * [Redux](https://redux.js.org/) - State container
 * [postgreSQL](https://www.postgresql.org/) - database
-* [Redux](https://redux.js.org/) - State container
 * [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
 * [Node](https://nodejs.org/en/) - Package ecosystem
 
