@@ -9,7 +9,7 @@ export const GET_ALL_USERS = 'GET_ALL_USERS'
 export const LOGIN_MODAL = 'LOGIN_MODAL'
 export const SIGNUP_MODAL = 'SIGNUP_MODAL'
 
-const API = 'http://localhost:5000'
+const API = `${process.env.REACT_APP_BACKEND}`
 
 
 export const getAllSnacks = () => (
