@@ -1,5 +1,7 @@
 # Snacks (Frontend)
 
+https://snackreviews.herokuapp.com/
+
 Snacks is a snack rating and review web application.  It allows user to create a profile, log in, and leave a review and rating for the seeded snacks.
 
 ## Getting Started
@@ -28,12 +30,12 @@ Install dependent node modules:
 Start the development server:
 
 ```shell
-* npm start
+npm start
 ```
 
 ## Deployment
 
-This project has been deployed on Heroku at the address:
+This project has been deployed on Heroku at the address: https://snackreviews.herokuapp.com/
 
 ## Built With
 
@@ -42,7 +44,6 @@ This project has been deployed on Heroku at the address:
 * [React](https://reactjs.org/) - Frontend library
 * [Redux](https://redux.js.org/) - State container
 * [postgreSQL](https://www.postgresql.org/) - database
-* [Redux](https://redux.js.org/) - State container
 * [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
 * [Node](https://nodejs.org/en/) - Package ecosystem
 
