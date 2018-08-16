@@ -1,13 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-
+import {Link} from 'react-router-dom'
 import {Col, Row} from 'react-materialize'
+
 import SnackBasketItem from './SnackBasketItem'
 
-import {Link} from 'react-router-dom'
-
 class SnackBasket  extends Component {
-
   constructor(props){
     super(props)
   }

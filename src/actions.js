@@ -15,66 +15,65 @@ const API = `${process.env.REACT_APP_BACKEND}`
 export const getAllSnacks = () => (
   dispatch => {
     axios.get(`${API}/api/snacks`)
-    .then((response) => {
-      dispatch({
-        type: GET_ALL_SNACKS,
-        payload: response.data.data
+      .then((response) => {
+        dispatch({
+          type: GET_ALL_SNACKS,
+          payload: response.data.data
+        })
       })
-    })
   }
 )
 
 export const getAllReviews = () => (
   dispatch => {
     axios.get(`${API}/api/reviews`)
-    .then((response) => {
-      dispatch({
-        type: GET_ALL_REVIEWS,
-        payload: response.data.data
+      .then((response) => {
+        dispatch({
+          type: GET_ALL_REVIEWS,
+          payload: response.data.data
+        })
       })
-    })
   }
 )
 
 export const createReview = (snackId, body) => (
   dispatch => {
-    request(`/api/snacks/${snackId}/reviews`,'post', body)
-    .then(response => {
-      dispatch(getAllReviews())
-    })
+    request(`/api/snacks/${snackId}/reviews`, 'post', body)
+      .then(response => {
+        dispatch(getAllReviews())
+      })
   }
 )
 
 export const editReview = (snackId, reviewId, body) => {
-  console.log(`/api/snacks/${snackId}/reviews/${reviewId}`);
   return (
-  dispatch => {
-    console.log(body)
-    request(`/api/snacks/${snackId}/reviews/${reviewId}`,'put', body)
-    .then(response => {
-      dispatch(getAllReviews())
-    })
-  }
-)}
+    dispatch => {
+      request(`/api/snacks/${snackId}/reviews/${reviewId}`, 'put', body)
+        .then(response => {
+          dispatch(getAllReviews())
+        })
+    }
+  )
+}
 
 export const deleteReview = (snackId, reviewId) => (
   dispatch => {
-    request(`/api/snacks/${snackId}/reviews/${reviewId}`,'delete')
-    .then(response => {
-      dispatch(getAllReviews())
-    })
+    request(`/api/snacks/${snackId}/reviews/${reviewId}`, 'delete')
+      .then(response => {
+        dispatch(getAllReviews())
+      })
   }
 )
 
 export const getUser = () => (
   dispatch => {
     axios.get(`${API}/users/`)
-    .then((response) => {
-      dispatch({
-        type: GET_USER,
-        payload: response.data.data
+      .then((response) => {
+        dispatch({
+          type: GET_USER,
+          payload: response.data.data
+        })
       })
-    })
   }
 )
 
@@ -82,36 +81,36 @@ export const getUser = () => (
 export const getAllUsers = () => (
   dispatch => {
     axios.get(`${API}/users/`)
-    .then((response) => {
-      dispatch({
-        type: GET_ALL_USERS,
-        payload: response.data.data
+      .then((response) => {
+        dispatch({
+          type: GET_ALL_USERS,
+          payload: response.data.data
+        })
       })
-    })
   }
 )
 
 export const getAuth = () => (
   dispatch => {
     axios.get(`${API}/auth/`)
-    .then((response) => {
-      dispatch({
-        type: GET_AUTH,
-        payload: response.data.data
+      .then((response) => {
+        dispatch({
+          type: GET_AUTH,
+          payload: response.data.data
+        })
       })
-    })
   }
 )
 
 export const loginModal = () => {
   return (
-  dispatch => {
-    dispatch({
-      type: LOGIN_MODAL
-    })
-  }
-)}
-
+    dispatch => {
+      dispatch({
+        type: LOGIN_MODAL
+      })
+    }
+  )
+}
 
 export const signupModal = () => (
   dispatch => {
@@ -121,15 +120,14 @@ export const signupModal = () => (
   }
 )
 
-
 export const signup = (body) => (
   dispatch => {
-    axios.post(`${API}/users`,body)
-    .then((response) => {
-      dispatch({
-        type: LOGIN_MODAL,
+    axios.post(`${API}/users`, body)
+      .then((response) => {
+        dispatch({
+          type: LOGIN_MODAL,
+        })
       })
-    })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
   }
 )

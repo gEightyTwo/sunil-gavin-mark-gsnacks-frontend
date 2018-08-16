@@ -5,10 +5,6 @@ import {connect} from 'react-redux'
 import scrollToComponent from 'react-scroll-to-component';
 import 'moment-timezone';
 
-// import Banner from './Banner'
-// import SnackBasket from '../Containers/SnackBasket'
-// import SnackPage from '../Containers/SnackPage'
-
 import { withAuthentication } from '../helpers'
 import {deleteReview, modifyReview} from '../actions'
 

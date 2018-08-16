@@ -142,8 +142,6 @@ nav {
 
 .card-image {
   border-radius: 3px;
-  /* max-height: 200px; */
-  /* clip: rect(0px,100px,100px,0px) !important; */
 }
 
 .card-title {
@@ -240,7 +238,6 @@ p.card-review-count {
 
 
 .message-box-card-username{
-  /* margin: -10px 10px 5px 10px; */
   margin: 0px;
   font-size: 17px;
   font-weight: 400;
@@ -249,7 +246,6 @@ p.card-review-count {
 
 
 .message-box-card-date{
-  /* margin: 5px 10px 10px 10px; */
   font-size: 14px;
   font-weight: 100;
   margin-top: 4px;
@@ -271,12 +267,6 @@ p.card-review-count {
 .message-box-card-stars i.selected {
   color: rgb(0,132,137);
 }
-
-
-.message-box-card-stars i:hover {
-  /* color: rgb(0,132,137); */
-}
-
 
 .message-box-card-text-input {
   margin-top:20px;
@@ -308,8 +298,6 @@ p.card-review-count {
 .disabled-comment-box {
     background-color:  rgba(245,245,245) !important;
 }
-
-
 
 
 /*  Main Item Details*/
@@ -400,7 +388,6 @@ p.card-review-count {
 
 
 .review-card-username{
-  /* margin: -10px 10px 5px 10px; */
   margin: 0px;
   font-size: 17px;
   font-weight: 400;
@@ -409,7 +396,6 @@ p.card-review-count {
 
 
 .review-card-date{
-  /* margin: 5px 10px 10px 10px; */
   font-size: 14px;
   font-weight: 100;
   margin-top: 4px;

@@ -1,16 +1,13 @@
 import React, {Component} from 'react'
 import { request, AuthenticationService } from '../helpers'
 
-
 class ModalLogIn extends Component {
-
   constructor(props){
     super(props)
     this.state = {
       showErrorMessage: false
     }
   }
-
 
   handleSignIn = event => {
     event.preventDefault()

@@ -1,7 +1,6 @@
 import React from 'react'
 import {Col, Row} from 'react-materialize'
 
-
 const Footer = () => (
 
 <section className='footer'>
